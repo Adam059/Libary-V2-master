@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Library.Models.LendingDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Lista Twoich wypozyczen</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Książka
+            </th>
+            <th>
+                Data wypożyczenia
+            </th>
+            <th>
+                Wypożyczono
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LendingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Days)
+                </td>
+                <td>
+                    <a href="/Book/Release?id=@item.BookId">Oddaj książkę</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
